@@ -79,7 +79,7 @@ const Notes = () => {
                             Notes List
                         </Typography>
                         <Grid container spacing={3}>
-                            {notes.map((note) => (
+                            {notes?.map((note) => (
                                 <Grid item xs={12} key={note.id}>
                                     <Card elevation={3} sx={{ height: '100%' }}>
                                         <CardContent>
