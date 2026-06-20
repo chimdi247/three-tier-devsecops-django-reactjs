@@ -11,10 +11,15 @@ const Notes = () => {
         fetchNotes();
     }, []);
 
-    const fetchNotes = async () => {
+   const fetchNotes = async () => {
+    try {
         const response = await axios.get('/api/notes/');
-        setNotes(response.data);
-    };
+        setNotes(Array.isArray(response.data) ? response.data : []);
+    } catch (err) {
+        console.error('Failed to fetch notes:', err);
+        setNotes([]);
+    }
+};
 
     const addNote = async () => {
         const response = await axios.post('/api/notes/', { title, content });
