@@ -13,6 +13,13 @@ spec:
     - host: www.raph247.online
       http:
         paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: api
+                port:
+                  number: 8000
           - path: /
             pathType: Prefix
             backend:
